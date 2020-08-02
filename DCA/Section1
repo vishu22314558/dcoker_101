@@ -1,74 +1,9 @@
-docker-compose up -d
-docker-compose ps
-docker-compose down
-
-
 #Will download the nginx image from Docker Hub repo
-dcoker pull nginx
+docker pull nginx
 
-#Purging All Unused or Dangling Images, Containers, Volumes and network 
-docker system prune   (remove any stopped containers - dangling)
-docker system prune -a  (all unused images)
-
-#Remove one or more specific images
-#list 
-docker images -a
-docker rmi Image Image  
-
-#Docker images consist of multiple layers. Dangling images are layers that have no relationship to any tagged images. They no longer serve a purpose and consume disk space.
-#list 
-docker images -f dangling=true
-docker images purge
-
-#Removing images according to a pattern
-#list 
-docker images -a |  grep "pattern"
-docker images -a | grep "pattern" | awk '{print $3}' | xargs docker rmi
-
-
-#Remove one or more specific containers
-#list 
-docker ps -a
-docker rm ID_or_Name ID_or_Name
-
-#Remove a container upon exit
-If you know when you’re creating a container that you won’t want to keep it around once you’re done
-docker run --rm image_name
-
-#Remove all exited containers
-You can locate containers using docker ps -a and filter them by their status: created, restarting, running, paused, or exited. 
-#List 
-docker ps -a -f status=exited
-docker rm $(docker ps -a -f status=exited -q)
-
-#Remove containers using more than one filter
-docker ps -a -f status=exited -f status=created
-docker rm $(docker ps -a -f status=exited -f status=created -q)
-
-#Remove containers according to a pattern
-docker ps -a |  grep "pattern”
-docker ps -a | grep "pattern" | awk '{print $3}' | xargs docker rmi
-
-#Stop and remove all containers
-docker ps -a
-docker stop $(docker ps -a -q)
-docker rm $(docker ps -a -q)
-
-#Removing Volumes
-docker volume ls
-docker volume rm volume_name volume_name
-
-#Remove dangling volumes - Docker 1.9 and later
-docker volume ls -f dangling=true
-docker volume prune
-
-#Remove a container and its volume
-If you created an unnamed volume, it can be deleted at the same time as the container with the -v flag
-docker rm -v container_name
-
-##########################
 #run nginx in background at 8080dcoker ps
 docker run -p 8080:80 -dt nginx
+
 
 
 
