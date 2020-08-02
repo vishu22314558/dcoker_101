@@ -3,7 +3,7 @@ dcoker pull nginx
 
 #Purging All Unused or Dangling Images, Containers, Volumes and network 
 docker system prune   (remove any stopped containers - dangling)
-docker system prune -o  (all unused images)
+docker system prune -a  (all unused images)
 
 #Remove one or more specific images
 #list 
@@ -61,8 +61,9 @@ docker volume prune
 If you created an unnamed volume, it can be deleted at the same time as the container with the -v flag
 docker rm -v container_name
 
-
-
+##########################
+#run nginx in background at 8080dcoker ps
+docker run -p 8080:80 -dt nginx
 
 
 
