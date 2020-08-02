@@ -11,7 +11,7 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 # copy source code to the working dir 
-COPY web/ .
+COPY src/ .
 
 # command to run on container start 
 CMD [ "python" ,"./app.py" ]

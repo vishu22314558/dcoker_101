@@ -1,6 +1,7 @@
-web:
-  build: ./app
-  ports:
-   - "5000:5000"
-  volumes:
-   - .:/code
+version: "3.7"
+services:
+  app:
+    build: app
+    restart: always
+    ports:
+      - "5000:5000"
