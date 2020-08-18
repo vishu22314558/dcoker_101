@@ -1,0 +1,11 @@
+docker build -t flask-sample .
+docker run -d -p 5000:5000 flask-sample
+docker ps
+docker ps -a
+docker stop <CONTAINER>
+---
+docker-compose up
+
+
+
+
